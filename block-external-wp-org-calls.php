@@ -17,6 +17,7 @@ function add_admin_warning(){
     ?>
 
     <div class="error">
+        <h1>Skip WP ORG API Calls</h1>
         <p>
             WARNING: This message means a call to WordPress.org related services was blocked,<br>
             and some functionality might not work on your site whilst this plugin is enabled.<br><br>
