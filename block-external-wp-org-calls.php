@@ -93,7 +93,9 @@ function filter_http_request_args($args, $url) {
         }
 
         // James bond this request if it's ajax
-        if ((defined('DOING_AJAX') && DOING_AJAX) || $current_screen->id != 'plugins') {
+        if ((defined('DOING_AJAX') && DOING_AJAX)
+            || $current_screen->id != 'plugins'
+            || $current_screen->id != 'update-core') {
             die("Another day!");
         } else {
             // We are likely hitting this on something like plugins.php, so let's show a friendly message.
