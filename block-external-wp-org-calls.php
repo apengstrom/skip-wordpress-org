@@ -11,6 +11,24 @@
 defined( 'ABSPATH' ) or die( 'Not today!' );
 
 /*
+ * This function is strictly to provide a friendly user warning in the WP Administrator.
+ */
+function add_admin_warning(){
+    ?>
+
+    <div class="error">
+        <p>
+            WARNING: This message means a call to WordPress.org related services was blocked,<br>
+            and some functionality might not work on your site whilst this plugin is enabled.<br><br>
+
+            <strong>This plugin is only meant as a temporary workaround.</strong>
+        </p>
+    </div>
+
+    <?php
+}
+
+/*
  * This function will block via pre_http_request, the majority of wordpress.org
  * related functionality, as well as woocommerce.com
  */
@@ -65,28 +83,10 @@ function filter_http_request_args($args, $url) {
 
     // James bond this request
     if (strpos($url, 'wordpress.org') != false || strpos($url, 'woocommerce.com') != false) {
-        die("Another day!");
+        add_action('admin_notices','add_admin_warning');
+        return false;
     }
 
     return $args;
 }
 add_filter('http_request_args', 'filter_http_request_args', 10, 2);
-
-/*
- * This function is strictly to provide a friendly user warning in the WP Administrator.
- */
-function add_admin_warning(){
-    ?>
-
-    <div class="error">
-        <p>
-            WARNING: This message means a call to WordPress.org related services was blocked,<br>
-            and some functionality might not work on your site whilst this plugin is enabled.<br><br>
-
-            <strong>This plugin is only meant as a temporary workaround.</strong>
-        </p>
-    </div>
-
-    <?php
-}
-add_action('admin_notices','add_admin_warning');
