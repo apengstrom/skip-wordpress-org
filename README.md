@@ -21,3 +21,7 @@ This function filters pre_http_request to block specific URLs from being hit by 
 This function filters the request args, to essentially do the same. It is a stopgap measure
 since we realized that wp_remote_post functions do not get affected by the above function that
 operates on the pre_http_request hook.
+
+### add_admin_warning
+The warning function is strictly to provide a user-friendly UI response if a request is blocked
+in the WordPress Administrator / backend.

@@ -56,7 +56,8 @@ function disable_wp_org_endpoints($pre, $args, $url) {
 }
 add_filter('pre_http_request', 'disable_wp_org_endpoints', 10, 3);
 
-/* Function to filter HTTP Request args for plugins making a wp_remote_post request
+/*
+ * Function to filter HTTP Request args for plugins making a wp_remote_post request
  * Basically, we can't hook or filter wp_remote_* functions, so we filter the args
  * in the HTTP object instead with this filter.
  */
@@ -70,3 +71,22 @@ function filter_http_request_args($args, $url) {
     return $args;
 }
 add_filter('http_request_args', 'filter_http_request_args', 10, 2);
+
+/*
+ * This function is strictly to provide a friendly user warning in the WP Administrator.
+ */
+function add_admin_warning(){
+    ?>
+
+    <div class="error">
+        <p>
+            WARNING: This message means a call to WordPress.org related services was blocked,<br>
+            and some functionality might not work on your site whilst this plugin is enabled.<br><br>
+
+            <strong>This plugin is only meant as a temporary workaround.</strong>
+        </p>
+    </div>
+
+    <?php
+}
+add_action('admin_notices','add_admin_warning');
