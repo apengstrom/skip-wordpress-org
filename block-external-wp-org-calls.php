@@ -19,10 +19,7 @@ function add_admin_warning(){
     <div class="error">
         <h1>Skip WP ORG API Calls</h1>
         <p>
-            WARNING: This message means a call to WordPress.org related services was blocked,<br>
-            and some functionality might not work on your site whilst this plugin is enabled.<br><br>
-
-            <strong>This plugin is only meant as a temporary workaround.</strong>
+            <strong>WARNING:</strong> This message means a call to WordPress.org related services was blocked, and some functionality might not work on your site whilst this plugin is enabled. <strong>This plugin is only meant as a temporary workaround.</strong> If you have any problems using this plugin, or have any feedback, please create an issue on our GitHub repository <a href="https://github.com/apengstrom/skip-wordpress-org" target="_blank">here</a>. We will try to reply as soon as possible.
         </p>
     </div>
 
